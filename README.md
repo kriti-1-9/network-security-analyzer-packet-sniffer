@@ -10,7 +10,3 @@ A beginner-to-intermediate level project that uses **Python**, **Scapy**, and **
 - 📊 **Protocol-wise Traffic Summary**
 - 🚩 **Basic Intrusion Detection**
 - 🌐 **Web Dashboard (Flask + Chart.js)**
-
----
-
-## 📁 Folder Structure
