@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Network Packet Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Network Packet Dashboard</h1>
+
+    <h2>Protocol Distribution</h2>
+    <canvas id="protocolChart" width="400" height="200"></canvas>
+
+    <h2>Top 5 Source IPs</h2>
+    <ul>
+        {% for ip, count in top_ips %}
+            <li>{{ ip }} - {{ count }} packets</li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        const ctx = document.getElementById('protocolChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ labels | tojson }},
+                datasets: [{
+                    label: 'Packet Count',
+                    data: {{ values | tojson }},
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
